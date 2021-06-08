@@ -1,6 +1,7 @@
 # DSP_Plugins_New_Building
+![alt text](https://github.com/yzanhua/DSP_Plugins_New_Building/blob/main/DEMO.jpg)
 ---
-## PlanetMiner:        
+## 1. PlanetMiner:        
 ### What's new:
 Add a new building for existing PlanetMiner Mod (https://github.com/crecheng).
 ### Dependent MODs:
@@ -9,7 +10,7 @@ BepInEx, LDBTool.
 Put PlanetMiner.dll inside BepInEx\plugins together with LDBTool.dll.
 
 ---
-## HiddensModPlus:
+## 2. HiddensModPlus:
 ### What's new:     
 Add Color Render for HiddensMOD.
 ### Dependent MODs:      
