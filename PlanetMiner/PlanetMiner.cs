@@ -8,15 +8,16 @@ using HarmonyLib;
 namespace PlanetMiner
 {
     [BepInDependency("me.xiaoye97.plugin.Dyson.LDBTool", BepInDependency.DependencyFlags.HardDependency)]
-    [BepInPlugin("me.yzanh.DSP.PlanetMiner", "PlanetMinerMod", "1.0")]
+    [BepInPlugin("me.yzanh.DSP.PlanetMiner", "PlanetMinerMod", "1.1")]
     public class PlanetMiner : BaseUnityPlugin
     {
         public Sprite icon;
         public static bool isRun = false;
-        private const int uesEnergy = 20000000;
+        private const int uesEnergy = 20 * 1000 * 1000;  // 20M
         private const int waterSpeed = 100;
         private static long frame = 0;
         private static uint seed = 100000;
+        private static int stationMaxItemKinds = 4; // number of slots in PlanetMiner.  // should not equal 3 or 4
 
         void Awake()
         {
@@ -31,18 +32,18 @@ namespace PlanetMiner
             var ori_station = LDB.items.Select(2104);
             var planetMiner = ori_station.Copy();
             var planetMinerRecipe = ori_station.maincraft.Copy();
-            
+
             // create new model with new color
             var oriModel = LDB.models.Select(planetMiner.ModelIndex);
             var newModel = oriModel.Copy();
             newModel.Preload();  // important
             newModel.ID = newModelID;
             newModel.prefabDesc.modelIndex = newModelID;
-            
+
             List<Material> temp = new List<Material>() { Instantiate(newModel.prefabDesc.materials[0]) };
-            temp[0].color = new Color(153/255f, 52 / 255f, 104 / 255f);
+            temp[0].color = new Color(153 / 255f, 52 / 255f, 104 / 255f);
             Material[] mats = temp.ToArray();
-            
+
             newModel.prefabDesc.lodMaterials[0] = mats;
             newModel.Name = newModel.ID.ToString();
             newModel.name = newModel.ID.ToString();
@@ -75,7 +76,7 @@ namespace PlanetMiner
             planetMiner.recipes = new List<RecipeProto>() { planetMinerRecipe };
             planetMiner.makes = new List<RecipeProto>() { };
             planetMiner.prefabDesc.stationMaxItemCount = 20000;
-            planetMiner.prefabDesc.stationMaxItemKinds = 1;
+            planetMiner.prefabDesc.stationMaxItemKinds = PlanetMiner.stationMaxItemKinds;
             planetMiner.prefabDesc.modelIndex = newModel.ID;
 
             // icon
@@ -119,6 +120,10 @@ namespace PlanetMiner
 
         private void Init() => PlanetMiner.isRun = true;
 
+        /*
+         * Credit to: crecheng
+         * https://github.com/crecheng/DSPMod/blob/main/PlanetMiner/PlanetMiner.cs
+         */
         [HarmonyPostfix]
         [HarmonyPatch(typeof(FactorySystem), "GameTickLabResearchMode")]
         private static void Miner(FactorySystem __instance)
@@ -162,19 +167,16 @@ namespace PlanetMiner
                 StationComponent stationComponent = transport.stationPool[index1];
                 if (stationComponent != null && stationComponent.storage != null)
                 {
-                    if (stationComponent.storage.Length > 1) continue;
-                    StationStore stationStore1 = stationComponent.storage[0];
-
-                    // add fuel
-                    if (stationStore1.localLogic == ELogisticStorage.Demand && stationStore1.max > stationStore1.count)
+                    if (stationComponent.storage.Length != PlanetMiner.stationMaxItemKinds) continue;
+                    for (int slotID = 0; slotID < stationComponent.storage.Length; slotID++)
                     {
-                        
-                        if (veins.ContainsKey(stationStore1.itemId))
+                        StationStore stationStore1 = stationComponent.storage[slotID];
+                        if (stationStore1.localLogic == ELogisticStorage.Demand && stationStore1.max > stationStore1.count)
                         {
-                            if (stationComponent.energy >= uesEnergy)
+                            if (veins.ContainsKey(stationStore1.itemId) && stationComponent.energy >= uesEnergy)
                             {
                                 int index3 = veins[stationStore1.itemId].First<int>();
-                                if (veinPool[index3].type == EVeinType.Oil)
+                                if (veinPool[index3].type == EVeinType.Oil)  // if slot item is oil
                                 {
                                     float num2 = 0.0f;
                                     foreach (int index4 in veins[stationStore1.itemId])
@@ -182,7 +184,7 @@ namespace PlanetMiner
                                         if (veinPool.Length > index4 && veinPool[index4].productId > 0)
                                             num2 += (float)veinPool[index4].amount / 6000f;
                                     }
-                                    stationComponent.storage[0].count += (int)num2;
+                                    stationComponent.storage[slotID].count += (int)num2;
                                     if (flag)
                                         numArray[stationStore1.itemId] += (int)num2;
                                     stationComponent.energy -= uesEnergy;
@@ -195,22 +197,22 @@ namespace PlanetMiner
                                         if (PlanetMiner.GetMine(veinPool, index4, miningCostRate, __instance.planet.factory))
                                             ++num2;
                                     }
-                                    stationComponent.storage[0].count += num2;
+                                    stationComponent.storage[slotID].count += num2;
                                     if (flag)
                                         numArray[stationStore1.itemId] += num2;
                                     stationComponent.energy -= uesEnergy;
                                 }
+
+                            }
+                            else if (stationStore1.itemId == __instance.planet.waterItemId && stationComponent.energy >= uesEnergy)
+                            {
+                                stationComponent.storage[slotID].count += waterSpeed;
+                                if (flag)
+                                    numArray[stationStore1.itemId] += waterSpeed;
+                                stationComponent.energy -= uesEnergy;
                             }
                         }
-                        else if (stationStore1.itemId == __instance.planet.waterItemId)
-                        {
-                            stationComponent.storage[0].count += waterSpeed;
-                            if (flag)
-                                numArray[stationStore1.itemId] += waterSpeed;
-                            stationComponent.energy -= uesEnergy;
-                        }
                     }
-
                 }
             }
         }

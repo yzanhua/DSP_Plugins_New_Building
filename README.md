@@ -12,7 +12,7 @@ Put PlanetMiner.dll inside BepInEx\plugins together with LDBTool.dll.
 ---
 ## 2. HiddensModPlus:
 ### What's new:     
-Add Color Render for HiddensMOD.
+Add Color Render for some of the new buildings in HiddensMOD.
 ### Dependent MODs:      
 BepInEx, LDBTool, HiddensMOD.
 ### Usage:              
