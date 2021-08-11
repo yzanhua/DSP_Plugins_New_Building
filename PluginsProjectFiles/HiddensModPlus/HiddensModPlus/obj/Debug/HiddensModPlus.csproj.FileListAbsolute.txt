@@ -1,0 +1,5 @@
+D:\Apps\SteamLibrary\steamapps\common\Dyson Sphere Program\BepInEx\plugins\HiddensModPlus.dll
+D:\Apps\SteamLibrary\steamapps\common\Dyson Sphere Program\BepInEx\plugins\HiddensModPlus.pdb
+C:\Users\yzanh\Desktop\DSP\Plugins\HiddensModPlus\HiddensModPlus\obj\Debug\HiddensModPlus.csproj.CoreCompileInputs.cache
+C:\Users\yzanh\Desktop\DSP\Plugins\HiddensModPlus\HiddensModPlus\obj\Debug\HiddensModPlus.dll
+C:\Users\yzanh\Desktop\DSP\Plugins\HiddensModPlus\HiddensModPlus\obj\Debug\HiddensModPlus.pdb

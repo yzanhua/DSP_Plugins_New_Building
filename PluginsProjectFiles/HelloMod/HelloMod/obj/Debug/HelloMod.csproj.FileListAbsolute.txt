@@ -1,0 +1,2 @@
+C:\Users\yzanh\Desktop\DSP\Plugins\HelloMod\HelloMod\obj\Debug\HelloMod.csproj.AssemblyReference.cache
+C:\Users\yzanh\Desktop\DSP\Plugins\HelloMod\HelloMod\obj\Debug\HelloMod.csproj.CoreCompileInputs.cache

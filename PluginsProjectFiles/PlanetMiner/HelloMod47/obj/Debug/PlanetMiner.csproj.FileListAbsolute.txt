@@ -1,0 +1,8 @@
+C:\Users\yzanh\Desktop\DSP\Plugins\HelloMod47\HelloMod47\obj\Debug\PlanetMiner.csproj.CoreCompileInputs.cache
+C:\Users\yzanh\Desktop\DSP\Plugins\HelloMod47\HelloMod47\obj\Debug\PlanetMiner.dll
+C:\Users\yzanh\Desktop\DSP\Plugins\HelloMod47\HelloMod47\obj\Debug\PlanetMiner.pdb
+D:\Apps\SteamLibrary\steamapps\common\Dyson Sphere Program\BepInEx\plugins\PlanetMiner.dll
+D:\Apps\SteamLibrary\steamapps\common\Dyson Sphere Program\BepInEx\plugins\PlanetMiner.pdb
+C:\Users\yzanh\Desktop\DSP\Plugins\PlanetMiner\HelloMod47\obj\Debug\PlanetMiner.csproj.CoreCompileInputs.cache
+C:\Users\yzanh\Desktop\DSP\Plugins\PlanetMiner\HelloMod47\obj\Debug\PlanetMiner.dll
+C:\Users\yzanh\Desktop\DSP\Plugins\PlanetMiner\HelloMod47\obj\Debug\PlanetMiner.pdb

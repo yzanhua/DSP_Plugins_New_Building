@@ -1,0 +1,6 @@
+D:\Apps\SteamLibrary\steamapps\common\Dyson Sphere Program\BepInEx\plugins\HelloMod47.dll
+D:\Apps\SteamLibrary\steamapps\common\Dyson Sphere Program\BepInEx\plugins\HelloMod47.pdb
+C:\Users\yzanh\Desktop\DSP\Plugins\HelloMod47\HelloMod47\obj\Debug\HelloMod47.csproj.AssemblyReference.cache
+C:\Users\yzanh\Desktop\DSP\Plugins\HelloMod47\HelloMod47\obj\Debug\HelloMod47.csproj.CoreCompileInputs.cache
+C:\Users\yzanh\Desktop\DSP\Plugins\HelloMod47\HelloMod47\obj\Debug\HelloMod47.dll
+C:\Users\yzanh\Desktop\DSP\Plugins\HelloMod47\HelloMod47\obj\Debug\HelloMod47.pdb

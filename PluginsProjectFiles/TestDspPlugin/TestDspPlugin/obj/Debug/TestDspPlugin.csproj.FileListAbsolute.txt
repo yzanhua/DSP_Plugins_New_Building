@@ -1,0 +1,5 @@
+C:\Users\yzanh\Desktop\DSP\Plugins\TestDspPlugin\TestDspPlugin\bin\Debug\TestDspPlugin.dll
+C:\Users\yzanh\Desktop\DSP\Plugins\TestDspPlugin\TestDspPlugin\bin\Debug\TestDspPlugin.pdb
+C:\Users\yzanh\Desktop\DSP\Plugins\TestDspPlugin\TestDspPlugin\obj\Debug\TestDspPlugin.csproj.CoreCompileInputs.cache
+C:\Users\yzanh\Desktop\DSP\Plugins\TestDspPlugin\TestDspPlugin\obj\Debug\TestDspPlugin.dll
+C:\Users\yzanh\Desktop\DSP\Plugins\TestDspPlugin\TestDspPlugin\obj\Debug\TestDspPlugin.pdb
